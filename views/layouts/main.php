@@ -66,8 +66,16 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</main>
 
+</main>
+<p><?= $this->context->pershablon ?></p><!-- используем данные из общего контролера в шаблоне, через функцию context-->
+<?php if (isset($this->params['testdate1'])) : ?><!-- проверяем наличие данных передаваемых из контролеров для отображения в нужном контролере (Testik)-->
+    <p><?= $this->params['testdate1'] ?></p><!-- используем данные из контролера в шаблоне, через глобальный массив params-->
+    <p><?= $this->params['testdate2'] ?></p><!-- используем данные из вида, через глобальный массив params-->
+<?php endif ?>
+<?php if (isset($this->blocks['Block1'])) : ?>
+    <p><?= $this->blocks['Block1'] ?></p><!-- используем данные из блока объявленные в виде-->
+<?php endif ?>
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
         <p class="float-left">&copy; My Company <?= date('Y') ?></p>

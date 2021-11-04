@@ -11,6 +11,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    //'layout' => 'testik',//перезадаем основной шаблон для всех видов
+    //'defaultRoute' => 'testik/index', //переадресация главной страницы с указанием метода
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -49,7 +51,6 @@ $config = [
             'rules' => [
             ],
         ],
-
     ],
     'params' => $params,
 ];
