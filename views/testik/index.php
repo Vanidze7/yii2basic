@@ -14,5 +14,5 @@
 <?php $this->endBlock () ?>
 <p><?= $this->blocks['Block1'] ?></p>
 <?php
-$this->registerJsFile('@web/js/scripts.js', ['depends' => 'yii\web\YiiAsset']);//подключили js файл с jquery для данного вида
-$this->registerCssFile('@web/css/styles.css');//подключили css файл для данного вида
+//$this->registerJsFile('@web/js/scripts.js', ['depends' => 'yii\web\YiiAsset']);//подключили js файл с jquery для данного вида
+//$this->registerCssFile('@web/css/styles.css');//подключили css файл для данного вида

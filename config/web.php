@@ -13,6 +13,7 @@ $config = [
     ],
     //'layout' => 'testik',//перезадаем основной шаблон для всех видов
     //'defaultRoute' => 'testik/index', //переадресация главной страницы с указанием метода
+    'language' => 'ru',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

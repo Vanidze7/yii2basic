@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 
+use app\models\EntryForm;
 use yii\web\View;
 
 class TestikController extends FullController
@@ -40,6 +41,19 @@ class TestikController extends FullController
         //$this->view->title = 'TESTIK';//назначаем наименования страницы через контролер
         $this->view->registerMetaTag (['name' => 'description', 'content' => 'мето-описание'], 'description');//установка meta чего то там
         $this->view->params['testdate1'] = 'Данные 1 из vid контроллера Testik';
-        return $this->render('vid');
+
+        $exemp = new EntryForm();
+
+        if($exemp->load(\Yii::$app->request->post()) && $exemp->validate()) {//если данные загружены в модель из поста и прошли валидацию
+            if (\Yii::$app->request->isPjax) {//если через Pjax
+                \Yii::$app->session->setFlash('success', 'Данные приняты Через Pjax, сучка!');//флеш сообщение
+                $exemp = new EntryForm();//очищаем форму
+            }else{
+                \Yii::$app->session->setFlash('success', 'Данные приняты стандартно, сучка!');//флеш сообщение
+                return $this->refresh();
+            }
+        }
+
+        return $this->render('vid', compact('exemp'));//передаем экземпляр модели в шаблон
     }
 }
