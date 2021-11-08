@@ -6,6 +6,7 @@ return [
     'username' => 'user',
     'password' => '123',
     'charset' => 'utf8',
+    //'tablePrefix' => 'постоянный предлог таблицы',
 
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,

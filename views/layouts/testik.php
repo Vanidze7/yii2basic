@@ -23,7 +23,6 @@ AppAsset::register($this);
     <div class="row">
         <?= $content ?>
         <p><?= $this->context->pershablon ?></p>
-        <!--<p><?= $this->params['testdate1'] ?></p>-->
     </div>
 </div>
 <?php $this->endBody() ?>
