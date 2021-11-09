@@ -11,16 +11,17 @@ $this->title = 'TESTIK'
 
     <?php Pjax::begin() //функция обновления части страницы?>
 
-    <?php if (Yii::$app->session->hasFlash('success')): //вывод флеш сообщения удачной отправки данных?>
+    <?php /* if (Yii::$app->session->hasFlash('success')): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
         <?= Yii::$app->session->getFlash('success') ?>
     </div>
-    <?php endif;?>
+    <?php endif;*///вывод флеш сообщения удачной отправки данных?>
 
     <?php $form = ActiveForm::begin([
             'id' => 'my-form',//задаем свойста формы
+            'enableClientValidation' => false,//клиентская валидация
             'options' => [
                 'data' => ['pjax' => true]],//настройка активации функции pjax
             'fieldConfig' => [//задаем свойства полей
@@ -29,6 +30,12 @@ $this->title = 'TESTIK'
                 'labelOptions' => ['class' => 'col-md-1 control-label'],
             ]
     ]) ?>
+
+    <?php \app\components\HelloWidget::begin(['name'=> 'Vano']) ?>
+    <h1>КОнтент</h1>
+    <?php \app\components\HelloWidget::end() ?>
+
+    <?= \app\widgets\Alert::widget() //вывод флеш сообщения?>
         <?= $form->field($exemp, 'name')/*->hint('Заполните поле')*/->textInput(['placeholder' => 'Введите имя'])//->label('Имя')//назначаем имя ?>
 
         <?= $form->field($exemp, 'email')->input('email',['placeholder' => 'Введите email']) ?>

@@ -49,7 +49,9 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
+                'category/cat-one/<id:\d+>' => 'category/cat-one'//создаем правило перенаправления URL адреса (<id:\d+> какое то число)
             ],
         ],
     ],

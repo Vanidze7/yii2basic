@@ -49,16 +49,14 @@ class TestikController extends FullController
 
         $exemp = new EntryForm();
 
-        if($exemp->load(\Yii::$app->request->post()) && $exemp->validate()) {//если данные загружены в модель из поста и прошли валидацию
-            if (\Yii::$app->request->isPjax) {//если через Pjax
-                \Yii::$app->session->setFlash('success', 'Данные приняты Через Pjax, сучка!');//флеш сообщение
+        if($exemp->load(\Yii::$app->request->post())) {//если данные загружены в модель из поста и прошли валидацию
+            if (/*\Yii::$app->request->isPjax && */$exemp->validate()) {//если через Pjax. Тут бы пояснить
+                \Yii::$app->session->setFlash('success', 'Данные приняты, сучка!');//флеш сообщение
                 $exemp = new EntryForm();//очищаем форму
             }else{
-                \Yii::$app->session->setFlash('success', 'Данные приняты стандартно, сучка!');//флеш сообщение
-                return $this->refresh();
+                \Yii::$app->session->setFlash('error', 'Данные не приняты, сучка');//флеш сообщение
             }
         }
-
         return $this->render('vid', compact('exemp'));//передаем экземпляр модели в шаблон
     }
     public function actionView ($code = '') {//не работает GET
@@ -128,6 +126,6 @@ class TestikController extends FullController
         }
         *///DELETE
 
-        return $this->render('view', compact('delete'));
+        return $this->render('view');
     }
 }
